@@ -25,11 +25,11 @@ jobs:
       - name: Build and deploy to GitHub Pages (Staging)
         if: github.ref == 'refs/heads/staging'
         run: |
-          vite run build
+          vite build
           npx gh-pages -d build -b gh-pages-staging -u "${{ secrets.TOKEN }}"
 
       - name: Build and deploy to GitHub Pages (Production)
         if: github.ref == 'refs/heads/main'
         run: |
-          vite run build
+          vite build
           npx gh-pages -d build -b gh-pages-production -u "${{ secrets.TOKEN }}"
