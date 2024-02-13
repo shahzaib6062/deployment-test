@@ -26,10 +26,10 @@ jobs:
         if: github.ref == 'refs/heads/staging'
         run: |
           npm run build
-          npx gh-pages -d build -b gh-pages-staging -u "${{ secrets.GITHUB_TOKEN }}"
+          npx gh-pages -d build -b gh-pages-staging -u "${{ secrets.TOKEN }}"
 
       - name: Build and deploy to GitHub Pages (Production)
         if: github.ref == 'refs/heads/main'
         run: |
           npm run build
-          npx gh-pages -d build -b gh-pages-production -u "${{ secrets.GITHUB_TOKEN }}"
+          npx gh-pages -d build -b gh-pages-production -u "${{ secrets.TOKEN }}"
