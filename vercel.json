@@ -1,0 +1,14 @@
+{
+  "staging": {
+    "alias": "your-staging-alias",
+    "env": {
+      "API_URL": "https://api-staging.example.com"
+    }
+  },
+  "production": {
+    "alias": "your-production-alias",
+    "env": {
+      "API_URL": "https://api-production.example.com"
+    }
+  }
+}
