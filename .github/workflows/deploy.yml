@@ -20,16 +20,20 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: npm i
+        run: |
+          npm install
+          npm install -g create-vite  # Install Vite globally
 
       - name: Build and deploy to GitHub Pages (Staging)
         if: github.ref == 'refs/heads/staging'
         run: |
-          vite build
+          npm run build
+          echo "/* /gh-pages-staging/index.html 200" > build/vite.config.js
           npx gh-pages -d build -b gh-pages-staging -u "${{ secrets.TOKEN }}"
 
       - name: Build and deploy to GitHub Pages (Production)
         if: github.ref == 'refs/heads/main'
         run: |
-          vite build
+          npm run build
+          echo "/* /gh-pages-production/index.html 200" > build/vite.config.js
           npx gh-pages -d build -b gh-pages-production -u "${{ secrets.TOKEN }}"
